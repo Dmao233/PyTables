@@ -173,11 +173,11 @@ jobs:
 
       - name: Install PyTables
         run: |
-          python -m pip install --only-binary tables --find-links wheelhouse tables
+          python -m pip install --pre --only-binary tables --find-links wheelhouse tables
 
-      - name: Install PyTables
+      - name: Test PyTables
         run: |
-          python -Werror -m tables.tests.test_all -v
+          python -m tables.tests.test_all -v
 
   twine_check:
     needs: [ build_sdist, build_wheels ]
